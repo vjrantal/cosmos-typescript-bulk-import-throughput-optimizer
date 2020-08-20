@@ -27,16 +27,19 @@ const SLEEP_TIMEOUT = 10000;
             await sleep(SLEEP_TIMEOUT);
         }
 
-        await optimizer.bulkImportParallel(ImportMethod.Create);
+        await optimizer.bulkImportBulkOperations(ImportMethod.Create);
         await reset();
-        await optimizer.bulkImportParallel(ImportMethod.Upsert);
-        await reset();
-        await optimizer.bulkImportStoredProcedure(ImportMethod.Create);
-        await reset();
-        await optimizer.bulkImportStoredProcedure(ImportMethod.Upsert);
+        await optimizer.bulkImportBulkOperations(ImportMethod.Upsert);
+        //await optimizer.bulkImportParallel(ImportMethod.Create);
+        //await reset();
+        //await optimizer.bulkImportParallel(ImportMethod.Upsert);
+        //await reset();
+        //await optimizer.bulkImportStoredProcedure(ImportMethod.Create);
+        //await reset();
+        //await optimizer.bulkImportStoredProcedure(ImportMethod.Upsert);
     } catch (err) {
         console.error(err);
     } finally {
-        await optimizer.runDeletes();
+        //await optimizer.runDeletes();
     }
 })();
